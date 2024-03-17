@@ -1,0 +1,76 @@
+@use "sass:list";
+@use "sass:map";
+
+
+$breakPoints: (
+    desktop: (
+        min: 1024px,
+        max: 99999px
+    ),
+    mobile: (
+        min : 100px,
+        max: 1023px
+    ),
+    laptop: (
+        min: 1024px,
+        max: 1279px
+    ),
+    small: (
+        min: 50px,
+        max: 399px
+    )
+);
+
+
+@function getListOfResponsive($desktop, $mobile, $latop:'optional'){
+    $list : (
+        desktop: $desktop,
+        mobile: $mobile
+    );
+    @if($latop != 'optional'){
+        $list : map-merge($list, (laptop: $latop));
+    }
+    @return $list;
+}
+
+@function getTranstionValue($property){
+    @return $property var(--_anim-duration) var(--_anim-timing-function-v2)
+};
+
+@function getRepeatColWidth($colcount, $colgap){
+    @return repeat(
+        var($colcount),
+        calc(
+            (
+                100% / var($colcount)
+            ) 
+            - 
+            (
+                (
+                    (
+                        var($colcount) - 1
+                    ) * (
+                        var($colgap)
+                    )
+                ) 
+                / (var($colcount))
+            )
+        )
+    )
+};
+
+
+@mixin prepareMediaQueries($list){
+    @each $mediaKey, $mediaValue in $breakPoints{
+        $maxWidth: map.get($mediaValue, max);
+        $minWidth: map.get($mediaValue, min);
+        @media only screen and (max-width: #{$maxWidth}) and (min-width: #{$minWidth}){
+            @each $key, $value in $defaultValues{
+                $value1 : map.get($value, $mediaKey);
+                @if($value1 != null){
+                    #{$key} : $value1;
+                }
+            }
+        }
+    }
+}

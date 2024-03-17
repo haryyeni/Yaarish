@@ -1,0 +1,329 @@
+@use "sass:list";
+@use "sass:map";
+
+@import "../../common/styles/common.scss";
+
+$defaultValues: (
+    --_banner-h1-font-size: getListOfResponsive(60px, 32px, 50px),
+    --_banner-min-height: getListOfResponsive(100vh, 50vh, 75vh),
+    --_h2-font-size: getListOfResponsive(36px, 24px),
+    --_homepage-col-gap: getListOfResponsive(16px, 12px),
+    --_homepage-row-gap: getListOfResponsive(24px, 16px),
+    --_services-col-count: getListOfResponsive(3, 2),
+    --_service-img-height: getListOfResponsive(350px, 180px, 300px),
+    --_new-worthy-col-count: getListOfResponsive(2, 1),
+    --_new-worthy-img-height: getListOfResponsive(300px, 160px, 270px),
+    --_img-br-value: getListOfResponsive(4px, 4px),
+    --_most-booked-col-count: getListOfResponsive(4, 2, 2),
+    --_other-img-height: getListOfResponsive(160px, 100px),
+    --_team-col-count: getListOfResponsive(6, 2, 4),
+    --_team-img-size: getListOfResponsive(160px, 100px, 150px),
+);
+
+.wrapper{
+    @include prepareMediaQueries($defaultValues);
+    h2{
+        font-size: var(--_h2-font-size);
+        font-weight: 600;
+        text-transform: capitalize;
+    }
+    section{
+        &.banner__section{
+            min-height: var(--_banner-min-height);
+            display: var(--_d-flex);
+            align-items: center;
+            padding-block: 10px;
+            background: var(--_self-bg) no-repeat center center / cover;
+            position: var(--_p-relative);
+
+            & > div{
+                &.bg__wrapper{
+                    position: var(--_p-absolute);
+                    inset: 0 0 0 0;
+                    background: linear-gradient(to right, rgba(0, 0, 0, .8) 50%, transparent 100%);
+                }
+
+                &.container{
+                    position: var(--_p-relative);
+
+                    & > div{
+                        &.content__div{
+                            display: var(--_d-inline-flex);
+                            flex-direction: column;
+                            gap: var(--_default-col-gap);
+
+                            & > h1{
+                                font-size: var(--_banner-h1-font-size);
+                                color: var(--_g-white);
+                                font-weight: 700;
+                                text-transform: uppercase;
+                            }
+
+                            & > button{
+                                background: var(--_g-white);
+                                border-radius: var(--_img-br-value);
+                                color: var(--_logo-primary-color);
+                                text-transform: uppercase;
+                                min-height: 50px;
+                                font-size: var(--_default-font-size);
+                                font-weight: 500;
+                                display: var(--_d-inline-flex);
+                                align-items: center;
+                                justify-content: center;
+                                width: max-content;
+                                padding-inline: 12px;
+                                border:none;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.services__section{
+            padding-block: var(--_default-pd-block);
+
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                gap: var(--_default-col-gap);
+                h2{
+                    text-align: center;
+                    color: var(--_logo-primary-color);
+                }
+
+                & > div{
+                    &.items__row{
+                        display: var(--_d-grid);
+                        column-gap: var(--_homepage-col-gap);
+                        row-gap: var(--_homepage-row-gap);
+                        grid-template-columns: getRepeatColWidth(--_services-col-count, --_homepage-col-gap);
+
+                        & > div{
+                            &.item__grid{
+                                display: var(--_d-flex);
+                                flex-direction: column;
+                                row-gap: calc(var(--_default-col-gap) * .7);
+
+                                & > img{
+                                    width: 100%;
+                                    height: var(--_service-img-height);
+                                    border-radius: var(--_img-br-value);
+                                    object-fit: cover;
+                                }
+
+                                & > p{
+                                    font-size: var(--_default-font-size-18);
+                                    text-align: center;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.new__net__worthy{
+            padding-block: var(--_default-pd-block);
+            background: var(--_default-bg-secondary);
+
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                row-gap: var(--_default-col-gap);
+
+                h2{
+                    color: var(--_logo-primary-color);
+                    text-align: center;
+                }
+
+                & > div{
+                    &.items__row{
+                        display: var(--_d-grid);
+                        column-gap: var(--_homepage-col-gap);
+                        row-gap: var(--_homepage-row-gap);
+                        grid-template-columns: getRepeatColWidth(--_new-worthy-col-count, --_homepage-col-gap);
+
+                        & > div{
+                            display: var(--_d-flex);
+                            position: var(--_p-relative);
+                            cursor: pointer;
+
+                            &:hover{
+                                --_box-height-self: 100%;
+                                --_hover-box-radius: var(--_img-br-value);
+                            }
+
+                            & img{
+                                width: 100%;
+                                object-fit: cover;
+                                height: var(--_new-worthy-img-height);
+                                border-radius: var(--_img-br-value);
+                            }
+
+                            & > div{
+                                position: var(--_p-absolute);
+                                bottom: 0;
+                                left: 0;
+                                transition: height .45s ease-in-out;
+                                height: var(--_box-height-self, 50px);
+                                width: 100%;
+                                // padding: 50px;
+                                background: rgba(0,0,0,.6);
+                                display: var(--_d-flex);
+                                align-items: center;
+                                justify-content: center;
+                                border-radius: var(--_hover-box-radius, 0 0 var(--_img-br-value) var(--_img-br-value));
+
+                                & > p{
+                                    color: var(--_g-white);
+                                    text-align: center;
+                                    font-size: var(--_default-font-size-18);
+                                    text-transform: capitalize;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.most__booked__services{
+            padding-block: var(--_default-pd-block);
+            background: var(--_default-bg-secondary);
+
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                row-gap: var(--_default-col-gap);
+
+                h2{
+                    text-align: center;
+                    color: var(--_logo-primary-color);
+                }
+
+                & > div{
+                    &.items__row{
+                        display: var(--_d-grid);
+                        column-gap: var(--_homepage-col-gap);
+                        row-gap: var(--_homepage-row-gap);
+                        grid-template-columns: getRepeatColWidth(--_most-booked-col-count, --_homepage-col-gap);
+
+                        & > div{
+                            display: var(--_d-flex);
+                            flex-direction: column;
+
+                            & > img{
+                                width: 100%;
+                                object-fit: cover;
+                                border-radius: var(--_img-br-value) var(--_img-br-value) 0 0;
+                                height: var(--_new-worthy-img-height);
+                            }
+
+                            & > p{
+                                border: 1px solid var(--_g-black);
+                                padding: 12px;
+                                border-top: transparent;
+                                border-radius: 0 0 var(--_img-br-value) var(--_img-br-value);
+                                font-size: var(--_default-font-size-18);
+                                text-transform: capitalize;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        &.other__services{
+            padding-block: var(--_default-pd-block);
+            margin-block-start: var(--_default-pd-block);
+            // background: var(--_default-bg-secondary);
+            background: linear-gradient(to right, #CFF1FF 25%, var(--_default-bg-secondary) 100%);
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                row-gap: var(--_default-col-gap);
+
+                h2{
+                    text-align: center;
+                    color: var(--_logo-primary-color);
+                }
+
+                & > div{
+                    &.items__row{
+                        display: var(--_d-grid);
+                        column-gap: var(--_homepage-col-gap);
+                        row-gap: var(--_homepage-row-gap);
+                        grid-template-columns: getRepeatColWidth(--_most-booked-col-count, --_homepage-col-gap);
+
+                        & > div{
+                            display: var(--_d-flex);
+                            flex-direction: column;
+                            row-gap: calc(var(--_default-col-gap) * .7);
+                            align-items: center;
+
+                            & > img{
+                                width: 170px;
+                                object-fit: cover;
+                                border-radius: var(--_img-br-value) var(--_img-br-value);
+                                // height: var(--_other-img-height);
+                            }
+
+                            & > p{
+                                text-transform: capitalize;
+                                text-align: center;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        &.team__section{
+            padding-block: var(--_default-pd-block);
+
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                row-gap: var(--_default-col-gap);
+                // align-items: center;
+
+                h2{
+                    text-align: center;
+                    color: var(--_logo-primary-color);
+                }
+
+                & > div{
+                    &.items__row{
+                        display: var(--_d-grid);
+                        column-gap: var(--_homepage-col-gap);
+                        row-gap: var(--_homepage-row-gap);
+                        grid-template-columns: getRepeatColWidth(--_team-col-count, --_homepage-col-gap);
+
+                        & > div{
+                            display: var(--_d-flex);
+                            flex-direction: column;
+                            align-items: center;
+                            row-gap: calc(var(--_default-col-gap) * .7);
+
+                            & > img{
+                                width: var(--_team-img-size);
+                                height: var(--_team-img-size);
+                                border-radius: 50%;
+                            }
+
+                            & > a{
+                                padding: 4px 8px;
+                                border: 1px solid var(--_logo-primary-color);
+                                background: transparent;
+                                border-radius: var(--_img-br-value);
+                                color: var(--_logo-primary-color);
+                                font-size: 12px;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

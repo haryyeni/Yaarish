@@ -1,0 +1,103 @@
+@use "sass:list";
+@use "sass:map";
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import "./common/styles/common.scss";
+
+$container: (
+    desktop: (
+        min: 1370px,
+        max: 9999999px,
+        value: 1280px
+    ),
+    laptop: (
+        min: 1160px,
+        max: 1369px,
+        value: 1140px
+    ),
+    tablet: (
+        min: 1024px,
+        max: 1159px,
+        value: 960px
+    ),
+    ipad: (
+        min: 768px,
+        max: 1023px,
+        value: 720px
+    ),
+    mobile: (
+        min: 568px,
+        max: 767px,
+        value: 540px
+    )
+
+);
+
+$defaultValues: (
+  --_default-pd-block: getListOfResponsive(54px, 24px, 40px),
+  --_default-pd-inline: getListOfResponsive(24px, 16px),
+  --_default-col-gap: getListOfResponsive(24px, 16px),
+  --_g-container-pd-inline : getListOfResponsive(0px, 16px),
+  --_mobile-flex-direction-column: getListOfResponsive(row, column),
+  --_mobile-align-items-flex-start: getListOfResponsive(center, flex-start),
+  --_default-font-size: getListOfResponsive(16px, 14px),
+  --_default-font-weight: getListOfResponsive(400, 400),
+  --_default-font-size-18: getListOfResponsive(18px, 14px),
+  --_mobile-flex-direction-column-reverse: getListOfResponsive(column, column-reverse),
+  --_website-header-pd-block-end: getListOfResponsive(var(--_default-pd-inline), 0px)
+);
+
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+a{
+  text-decoration: none;
+}
+body{
+  @each $key, $value in $container{
+    $maxValue: map.get($value, max);
+    $minValue: map.get($value, min);
+    $widthValue: map.get($value, value);
+    @media only screen and (max-width: $maxValue) and (min-width: $minValue){
+        --_container-max-width: #{$widthValue};
+    }
+  }   
+  @include prepareMediaQueries($defaultValues);
+  --_default-font-family: "Poppins", sans-serif;
+  font-family: var(--_default-font-family);
+
+  --_d-flex: flex;
+  --_d-grid: grid;
+  --_d-inline-flex: inline-flex;
+  --_d-inline-grid: inline-grid;
+  --_d-block: block;
+  --_d-none: none;
+
+
+  --_p-relative: relative;
+  --_p-sticky: sticky;
+  --_p-absolute: absolute;
+  --_p-fixed: fixed;
+  --_p-static: static;
+
+  --_g-black-v2: #222222;
+  --_g-black: #000;
+  --_g-white: #fff;
+  --_g-border-light: #938A8A;
+  --_logo-primary-color: #6E1C25;
+  --_default-bg-secondary: #FFE0DC;
+
+  font-size: var(--_default-font-size);
+  font-weight: var(--_default-font-weight);
+  line-height: normal;
+  color: var(--_g-black);
+}
+
+
+.container{
+  max-width: var(--_container-max-width, 100%);
+  margin-inline: auto;
+  padding-inline: var(--_g-container-pd-inline);
+  width: 100%;
+}
