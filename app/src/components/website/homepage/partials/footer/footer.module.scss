@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 
-@import "../../../../common/styles/common.scss";
+@import "../../../../../common/styles/common.scss";
 
 $defaultValues : (
     --_footer-contact-col-count: getListOfResponsive(3, 1, 3)

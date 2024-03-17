@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 
-@import "../../common/styles/common.scss";
+@import "../../../common/styles/common.scss";
 
 $defaultValues: (
     --_banner-h1-font-size: getListOfResponsive(60px, 32px, 50px),

@@ -1,14 +1,14 @@
 import styles from './homepage.module.scss';
 import WebsiteHeader from './partials/header/header.component';
-import BannerImage from "../../assets/homepage/banner.png";
-import Services1 from "../../assets/homepage/services-1.png";
-import NewWorthy1 from "../../assets/homepage/spa-women.png";
-import MostBookedSerice1 from "../../assets/homepage/most-booked-service-1.png";
-import Cleaner1 from "../../assets/homepage/cleaner-1.png";
-import Team1 from "../../assets/homepage/team-1.png";
+import BannerImage from "../../../assets/homepage/banner.png";
+import Services1 from "../../../assets/homepage/services-1.png";
+import NewWorthy1 from "../../../assets/homepage/spa-women.png";
+import MostBookedSerice1 from "../../../assets/homepage/most-booked-service-1.png";
+import Cleaner1 from "../../../assets/homepage/cleaner-1.png";
+import Team1 from "../../../assets/homepage/team-1.png";
 import WebsiteFooter from './partials/footer/footer.component';
 
-export default function HomepageComponent(props){
+export default function HomepageComponentV2(props){
     const servicesList = [
         {
             name:'Bathroom Cleaning',
