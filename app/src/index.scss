@@ -43,7 +43,9 @@ $defaultValues: (
   --_default-font-weight: getListOfResponsive(400, 400),
   --_default-font-size-18: getListOfResponsive(18px, 14px),
   --_mobile-flex-direction-column-reverse: getListOfResponsive(column, column-reverse),
-  --_website-header-pd-block-end: getListOfResponsive(var(--_default-pd-inline), 0px)
+  --_website-header-pd-block-end: getListOfResponsive(var(--_default-pd-inline), 0px),
+  --_homepage-col-gap: getListOfResponsive(16px, 12px),
+  --_homepage-row-gap: getListOfResponsive(24px, 16px),
 );
 
 *{

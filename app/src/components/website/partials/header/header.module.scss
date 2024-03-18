@@ -1,7 +1,7 @@
 @use "sass:list";
 @use "sass:map";
 
-@import "../../../../../common/styles/common.scss";
+@import "../../../../common/styles/common.scss";
 
 $defaultValues: (
     --_header-max-height: getListOfResponsive(auto, 60px)

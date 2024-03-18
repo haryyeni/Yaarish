@@ -2,7 +2,7 @@ import React from 'react';
 import styles from "./footer.module.scss";
 
 
-export default function WebsiteFooter(){
+export default function WebsiteFooterV2(){
     const contactList = [
         {
             name : "Phone",
@@ -60,6 +60,13 @@ export default function WebsiteFooter(){
                             </div>
                         </>
                     }
+                </div>
+            </div>
+            <div className={styles.copyright__wrapper}>
+                <div className="container">
+                    
+                    Copyright @ 2024 All Rights Reserved By Yarrish | <a href="/terms-conditions">Terms and Conditions</a> | <a href="/privacy-policy">Privacy Policy</a> | The Website is made with ❤ by <a href="https://ddcloud.in/" target='_blank'><strong>D&D Cloud</strong></a>
+                    
                 </div>
             </div>
         </footer>

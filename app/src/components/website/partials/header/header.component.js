@@ -1,6 +1,6 @@
 import styles from "./header.module.scss";
 
-export default function WebsiteHeader(){
+export default function WebsiteHeaderV2(){
     return <>
         <header>
             <div className="container">
