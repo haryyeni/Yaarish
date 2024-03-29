@@ -2,7 +2,7 @@ import styles from "./header.module.scss";
 
 export default function WebsiteHeaderV2(){
     return <>
-        <header>
+        <header datatype='website-header'>
             <div className="container">
                 <div className={styles.header__first__row}>
                     <div className={styles.search__div}>

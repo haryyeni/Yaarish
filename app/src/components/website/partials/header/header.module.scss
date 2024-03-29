@@ -7,7 +7,7 @@ $defaultValues: (
     --_header-max-height: getListOfResponsive(auto, 60px)
 );
 
-header{
+header[datatype='website-header']{
     max-height: var(--_header-max-height);
     @include prepareMediaQueries($defaultValues);
     & > div{

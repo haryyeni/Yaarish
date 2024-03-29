@@ -36,6 +36,7 @@ $defaultValues: (
   --_default-pd-block: getListOfResponsive(54px, 24px, 40px),
   --_default-pd-inline: getListOfResponsive(24px, 16px),
   --_default-col-gap: getListOfResponsive(24px, 16px),
+  --_default-row-gap: getListOfResponsive(16px, 12px),
   --_g-container-pd-inline : getListOfResponsive(0px, 16px),
   --_mobile-flex-direction-column: getListOfResponsive(row, column),
   --_mobile-align-items-flex-start: getListOfResponsive(center, flex-start),
@@ -46,54 +47,69 @@ $defaultValues: (
   --_website-header-pd-block-end: getListOfResponsive(var(--_default-pd-inline), 0px),
   --_homepage-col-gap: getListOfResponsive(16px, 12px),
   --_homepage-row-gap: getListOfResponsive(24px, 16px),
+  --_default-scrollbar-width: getListOfResponsive(5px, 5px)
 );
-
-*{
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-a{
-  text-decoration: none;
-}
-body{
-  @each $key, $value in $container{
-    $maxValue: map.get($value, max);
-    $minValue: map.get($value, min);
-    $widthValue: map.get($value, value);
-    @media only screen and (max-width: $maxValue) and (min-width: $minValue){
+  
+  *{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  a{
+    text-decoration: none;
+  }
+  body{
+    @each $key, $value in $container{
+      $maxValue: map.get($value, max);
+      $minValue: map.get($value, min);
+      $widthValue: map.get($value, value);
+      @media only screen and (max-width: $maxValue) and (min-width: $minValue){
         --_container-max-width: #{$widthValue};
-    }
-  }   
-  @include prepareMediaQueries($defaultValues);
-  --_default-font-family: "Poppins", sans-serif;
-  font-family: var(--_default-font-family);
+      }
+    }   
+    @include prepareMediaQueries($defaultValues);
+    --_default-font-family: "Poppins", sans-serif;
+    font-family: var(--_default-font-family);
 
-  --_d-flex: flex;
-  --_d-grid: grid;
-  --_d-inline-flex: inline-flex;
-  --_d-inline-grid: inline-grid;
-  --_d-block: block;
-  --_d-none: none;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 150%;
+    
+    --_d-flex: flex;
+    --_d-grid: grid;
+    --_d-inline-flex: inline-flex;
+    --_d-inline-grid: inline-grid;
+    --_d-block: block;
+    --_d-none: none;
+    
+    
+    --_p-relative: relative;
+    --_p-sticky: sticky;
+    --_p-absolute: absolute;
+    --_p-fixed: fixed;
+    --_p-static: static;
+    
+    --_g-black-v2: #222222;
+    --_g-black: #000;
+    --_g-white: #fff;
+    --_g-border-light: #938A8A;
+    --_logo-primary-color: #6E1C25;
+    --_default-bg-secondary: #FFE0DC;
+    --_primary-blue: #407BFF;
+    --_secondary-text-color: #7E8084;
+    --_primary-border-color: #CECDCD;
+    --_g-default-bg: #F0EFEE;
 
 
-  --_p-relative: relative;
-  --_p-sticky: sticky;
-  --_p-absolute: absolute;
-  --_p-fixed: fixed;
-  --_p-static: static;
+    --_g-height-100dvh: 100dvh;
 
-  --_g-black-v2: #222222;
-  --_g-black: #000;
-  --_g-white: #fff;
-  --_g-border-light: #938A8A;
-  --_logo-primary-color: #6E1C25;
-  --_default-bg-secondary: #FFE0DC;
+    --_default-anim-duration: .45s;
+    --_default-anim-timing-function: cubic-bezier(0.390, 0.575, 0.565, 1.000);
 
-  font-size: var(--_default-font-size);
-  font-weight: var(--_default-font-weight);
-  line-height: normal;
-  color: var(--_g-black);
+    font-size: var(--_default-font-size);
+    font-weight: var(--_default-font-weight);
+    line-height: normal;
+    color: var(--_g-black);
 }
 
 
@@ -102,4 +118,34 @@ body{
   margin-inline: auto;
   padding-inline: var(--_g-container-pd-inline);
   width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+  input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input{
+  &:focus{
+    outline: none;
+    border-color: var(--_primary-blue);
+  }
+}
+
+button{
+  border: none;
+  background: transparent;
+}
+
+::-webkit-scrollbar{
+  width: var(--_default-scrollbar-width);
+}
+
+::-webkit-scrollbar-track{
+  background-color: #f6f6f7; 
+}
+::-webkit-scrollbar-thumb{
+  background-color: #407bffc7;
+  // border-radius: 4px;
 }

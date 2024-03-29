@@ -1,0 +1,48 @@
+@use "sass:list";
+@use "sass:map";
+
+@import "../../../../common/styles/common.scss";
+
+$defaultValues : (
+    --_admin-dashboard-sidebar-width: getListOfResponsive(300px, 0px, 230px),
+    --_admin-dashboard-grid-template-columns: getListOfResponsive(var(--_admin-dashboard-sidebar-width) calc(100% - var(--_admin-dashboard-sidebar-width)), auto)
+);
+body[data-page-type="admin-portal"]{
+    overflow: clip;
+}
+.dashbaord_section{
+    @include prepareMediaQueries($defaultValues);
+    display: var(--_d-grid);
+    grid-template-columns: var(--_admin-dashboard-grid-template-columns);
+    --_admin-layout-conatiner-maxheight: calc(var(--_g-height-100dvh) - var(--_admin-header-minHeight));
+    transition: getTranstionValue(grid-template-columns);
+    // max-height: 100dvh;
+    // overflow: clip;
+
+    &[datasidebarshow="false"]{
+        --_admin-dashboard-sidebar-width : 0px;
+        --_admin-dashboard-sidebar-mobile-width : 70%;
+        --_admin-dashboard-sidebar-width-translateX : 0%;
+    }
+    &[datasidebarshow="true"]{
+        --_admin-dashboard-sidebar-opacity: 1;
+        --_admin-dashboard-sidebar-visibility: visible;
+    }
+    
+    & > div{
+        &.layout__body{
+            background: var(--_g-default-bg);
+            max-height: var(--_admin-layout-conatiner-maxheight);
+            overflow-y: auto;
+
+            & > div{
+                &.layout__body__inner__div{
+                    // min-height: 2000px;
+                    min-height: var(--_admin-layout-conatiner-maxheight);
+                    padding: var(--_pd-default);
+                    // max-width: calc(100% - var(--_default-scrollbar-width));
+                }
+            }
+        }
+    }
+}

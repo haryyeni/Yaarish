@@ -34,7 +34,7 @@ $breakPoints: (
 }
 
 @function getTranstionValue($property){
-    @return $property var(--_anim-duration) var(--_anim-timing-function-v2)
+    @return $property var(--_default-anim-duration) var(--_default-anim-timing-function)
 };
 
 @function getRepeatColWidth($colcount, $colgap){

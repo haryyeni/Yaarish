@@ -1,0 +1,13 @@
+@use 'sass:list';
+@use 'sass:map';
+
+@import "../../common/styles/common.scss";
+
+$defaultValues : (
+    --_admin-header-minHeight: getListOfResponsive(50px, 45px),
+    --_pd-default: getListOfResponsive(40px 24px, 30px 16px)
+);
+
+.admin__wrapper{
+    @include prepareMediaQueries($defaultValues);
+}

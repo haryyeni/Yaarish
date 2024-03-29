@@ -1,0 +1,48 @@
+@use "sass:list";
+@use "sass:map";
+
+@import "../../../../common/styles/common.scss";
+
+$defaultValues: (
+    --_admin-logo-fs: getListOfResponsive(24px, 18px),
+    --_admin-toggle-size: getListOfResponsive(24px, 16px),
+);
+
+header[datatype='admin-header']{
+    @include prepareMediaQueries($defaultValues);
+    background: var(--_primary-blue);
+    padding-block: 6px;
+    min-height: var(--_admin-header-minHeight);
+    display: var(--_d-flex);
+    align-items: center;
+    box-shadow: 0 4px 10px rgba(0, 0, 0,.25);
+
+    & > div{
+        display: var(--_d-flex);
+        justify-content: space-between;
+
+        & > div{
+            &.left{
+                display: var(--_d-flex);
+                gap: var(--_default-col-gap);
+                align-items: center;
+                & > a{
+                    &.logo{
+                        color: var(--_g-white);
+                        font-size: var(--_admin-logo-fs);
+                        line-height: 1;
+                        text-transform: uppercase;
+                    }
+                }
+                & > button{
+                    cursor: pointer;
+                    display: var(--_d-flex);
+                    svg{
+                        width: var(--_admin-toggle-size);
+                        height: var(--_admin-toggle-size);
+                    }
+                }
+            }
+        }
+    }
+}

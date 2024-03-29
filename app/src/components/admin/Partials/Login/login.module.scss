@@ -1,0 +1,118 @@
+@use "sass:list";
+@use "sass:map";
+
+@import "../../../../common/styles/common.scss";
+
+$defaultValues : (
+    --_login-h1-fs: getListOfResponsive(40px, 24px),
+    --_login-span-fs: getListOfResponsive(20px, 16px)
+);
+
+
+
+.login__div{
+    display: var(--_d-flex);
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    width: 100%;
+
+    @include prepareMediaQueries($defaultValues);
+
+    & > div{
+        display: var(--_d-flex);
+        flex-direction: column;
+        row-gap: var(--_default-row-gap);
+        // align-items: center;
+        max-width: 500px;    
+
+        & > span{
+            font-size: var(--_login-span-fs);
+        }
+
+        & > h1{
+            font-size: var(--_login-h1-fs);
+            color: var(--_primary-blue);
+        }
+
+        & > form{
+            display: var(--_d-flex);
+            flex-direction: column;
+
+            & > label{
+                font-size: 16px;
+                color: var(--_secondary-text-color);
+                margin-block-end: calc(var(--_default-row-gap) * .5);
+            }
+
+            & > input{
+                width: 100%;
+                border: 1px solid var(--_primary-border-color);
+                height: 50px;
+                border-radius: 4px;
+                padding-inline: 10px;
+
+                &:focus{
+                    outline: none;
+                }
+            }
+
+            & > button{
+                display: var(--_d-inline-flex);
+                width: max-content;
+                padding: 10px 24px;
+                margin-block-start: calc(var(--_default-row-gap));
+                border: none;
+                background: var(--_primary-blue);
+                border-radius: 4px;
+                color: var(--_g-white);
+                font-size: 14px;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+                cursor: pointer ;
+            }
+
+            &[datatype="otp-form"]{
+                & > div{
+                    display: var(--_d-flex);
+                    gap: var(--_default-col-gap);
+                    margin-block-start: var(--_default-row-gap);
+
+                    & > input{
+                        width: 50px;
+                        height: 45px;
+                        resize: none;
+                        text-align: center;
+                        padding-inline: 5px;
+                        font-size: 18px;
+                        user-select: none;
+                        border-radius: 4px;
+                        // border-width: .5px;
+                        border: 1px solid var(--_primary-blue);
+                        box-shadow: 0 4px 4px rgba(0, 0, 0, .25); 
+                    }
+                }
+
+                & > span{
+                    &[datatype="resend-otp"]{
+                        display: var(--_d-flex);
+                        align-items: center;
+                        font-size: 16px;
+                        margin-block-start: calc(var(--_default-row-gap) * .75);
+
+                        & > button{
+                            background: none;
+                            padding: 0;
+                            border: none;
+                            margin-inline-start: 5px;
+                            color: var(--_primary-blue);
+                            font-size: 16px;
+                            font-weight: 500;
+                        }
+                    }
+                }
+            }
+            // row-gap: var(--_default-row-gap);
+        }
+    }
+}
