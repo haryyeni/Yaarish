@@ -36,6 +36,7 @@ $defaultValues: (
   --_default-pd-block: getListOfResponsive(54px, 24px, 40px),
   --_default-pd-inline: getListOfResponsive(24px, 16px),
   --_default-col-gap: getListOfResponsive(24px, 16px),
+  --_default-col-gap-16: getListOfResponsive(16px, 12px),
   --_default-row-gap: getListOfResponsive(16px, 12px),
   --_g-container-pd-inline : getListOfResponsive(0px, 16px),
   --_mobile-flex-direction-column: getListOfResponsive(row, column),
@@ -99,6 +100,10 @@ $defaultValues: (
     --_secondary-text-color: #7E8084;
     --_primary-border-color: #CECDCD;
     --_g-default-bg: #F0EFEE;
+    --_g-default-bg-2: #EDF0F5;
+    --_g-default-bg-3: #E6EAF2;
+    --_input-box-color-1: #A19B9B;
+    --_default-border-color-2: #D9D9D9;
 
 
     --_g-height-100dvh: 100dvh;
@@ -140,6 +145,7 @@ button{
 
 ::-webkit-scrollbar{
   width: var(--_default-scrollbar-width);
+  height: 5px;
 }
 
 ::-webkit-scrollbar-track{

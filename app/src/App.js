@@ -17,6 +17,7 @@ function App() {
       <Route path="/user-bookings" element={<AdminComponent path="userBookings"/>}></Route>
       <Route path="/manage-works" element={<AdminComponent path="manageWorks"/>}></Route>
       <Route path="/work-bookings" element={<AdminComponent path="workBookings"/>}></Route>
+      <Route path="/works-category" element={<AdminComponent path="workCategories"/>}></Route>
       <Route path="/signup" element={<LoginComponent />}></Route>
     </Routes>
   </>;

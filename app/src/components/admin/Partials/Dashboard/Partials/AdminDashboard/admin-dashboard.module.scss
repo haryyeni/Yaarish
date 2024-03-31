@@ -1,0 +1,21 @@
+@use "sass:map";
+@use "sass:list";
+
+@import "../../../../../../common/styles/common.scss";
+
+$defaultValues: (
+    --_admin-dashboard-col-count: getListOfResponsive(2, 1),
+    --_admin-dashboard-col-gap: getListOfResponsive(32px, 16px, 24px),
+);
+
+.admin__main{
+    @include prepareMediaQueries($defaultValues);
+
+    & > div{
+        &.cards__parent{
+            display: var(--_d-grid);
+            gap: var(--_admin-dashboard-col-gap);
+            grid-template-columns: getRepeatColWidth(--_admin-dashboard-col-count, --_admin-dashboard-col-gap);
+        }
+    }
+}

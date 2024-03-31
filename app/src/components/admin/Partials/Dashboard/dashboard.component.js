@@ -4,6 +4,7 @@ import styles from './dashboard.module.scss';
 import AdminDashboardComponent from './Partials/AdminDashboard/admin-dashboard.component';
 import ManageUsersComponent from './Partials/ManageUsers/manage-users.component';
 import UserBookings from './Partials/UserBookings/user-bookings.component';
+import ManageWorksComponent from './Partials/ManageWorks/manage-works.component';
 
 export default function DashboardComponent(props){
     useEffect(()=>{
@@ -13,7 +14,8 @@ export default function DashboardComponent(props){
     const InnerPages = {
         dashboard: <AdminDashboardComponent />,
         manageUsers: <ManageUsersComponent />,
-        userBookings: <UserBookings />
+        userBookings: <UserBookings />,
+        manageWorks: <ManageWorksComponent />
     }
     return <>
         <div 

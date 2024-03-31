@@ -1,0 +1,82 @@
+@use "sass:map";
+@use "sass:list";
+
+@import "../../../../../common/styles/common.scss";
+
+$defaultValues: (
+    --_admin-dashboard-card-pd: getListOfResponsive(24px, 12px),
+    --_admin-dashboard-card-count-fs: getListOfResponsive(24px, 18px),
+    --_admin-dashboard-card-count-label-fs: getListOfResponsive(20px, 16px),
+    --_admin-dashboard-card-top-img-size: getListOfResponsive(32px, 20px),
+);
+
+.cards__div{
+    @include prepareMediaQueries($defaultValues);
+
+    display: var(--_d-flex);
+    flex-direction: column;
+    box-shadow: 0 4px 7px rgba(0,0,0,.25);
+    background: var(--_g-white);
+    border-radius: 6px;
+    justify-content: space-between;
+
+    & > div{
+        &.top__div{
+            padding: var(--_admin-dashboard-card-pd);
+            display: var(--_d-flex);
+            justify-content: var(--_self-justify-content, space-between);
+            gap: 8px;
+            align-items: center;
+
+            & > div{
+                display: var(--_d-flex);
+                flex-direction: column;
+                gap: 4px;
+                & > p{
+                    color: var(--_primary-blue);
+                    &.count{
+                        font-size: var(--_admin-dashboard-card-count-fs);
+                        font-weight: 500;
+                        line-height: 150%;
+                    }
+                    &.cards__count__label{
+                        font-size: var(--_admin-dashboard-card-count-label-fs);
+                        font-weight: 300;
+                    }
+                }
+
+                &.icon__div{
+                    background: var(--_g-default-bg-2);
+                    border-radius: 50%;
+                    --_self-perc: .5;
+                    width: calc(var(--_admin-dashboard-card-top-img-size) + (var(--_admin-dashboard-card-top-img-size) * var(--_self-perc)));
+                    height: calc(var(--_admin-dashboard-card-top-img-size) + (var(--_admin-dashboard-card-top-img-size) * var(--_self-perc)));
+                    justify-content: center;
+                    align-items: center;
+                }
+
+
+                & > img{
+                    width: var(--_admin-dashboard-card-top-img-size);
+                    height: var(--_admin-dashboard-card-top-img-size);
+                    object-fit: cover;
+                }
+            }
+        }
+
+        &.footer__div{
+            display: var(--_d-flex);
+            gap: 8px;
+            align-items: center;
+            justify-content: space-between;
+            padding: calc(var(--_admin-dashboard-card-pd) * .45) var(--_admin-dashboard-card-pd);
+            background: var(--_primary-blue);
+            border-radius: 0 0 6px 6px;
+            color: var(--_g-white);
+
+            & > a{
+                display: var(--_d-flex);
+            }
+        }
+    }
+}

@@ -1,0 +1,144 @@
+@use "sass:list";
+@use "sass:map";
+
+@import "../../../../../common/styles/common.scss";
+
+$defaultValues : (
+    --_admin-table-header-div-pd: getListOfResponsive(16px 12px, 12px 8px),
+    --_admin-table-header-div-title-fs: getListOfResponsive(20px, 16px),
+    --_admin-table-header-search-height: getListOfResponsive(42px, 34px),
+    --_admin-input-box-maxWidth: getListOfResponsive(170px, 100px),
+    --_admin-add-btn-size: getListOfResponsive(32px, 24px),
+    --_admin-table-pd-inline: getListOfResponsive(12px, 8px),
+    --_admin-table-th-fs: getListOfResponsive(18px, 16px),
+    --_admin-table-desc-maxWidth: getListOfResponsive(300px, 150px),
+    --_admin-table-td-img-width: getListOfResponsive(68px, 50px),
+    --_admin-table-td-img-height: getListOfResponsive(73px, 55px)
+);
+
+.table__main__div{
+    @include prepareMediaQueries($defaultValues);
+    background: var(--_g-white);
+
+    & > div{
+        &.header__div{
+            display: var(--_d-flex);
+            justify-content: space-between;
+            padding: var(--_admin-table-header-div-pd);
+            align-items: center;
+
+            & > p{
+                font-size: var(--_admin-table-header-div-title-fs);
+                font-weight: 400;
+                line-height: 150%;
+            }
+
+            & > div{
+                display: var(--_d-flex);
+                gap: var(--_default-col-gap-16);
+                align-items: center;
+
+                & > div{
+                    &.header__search{
+                        display: var(--_d-flex);
+                        gap: var(--_default-col-gap-16);
+                        align-items: center;
+                        height: var(--_admin-table-header-search-height);
+                        background: var(--_g-default-bg-3);
+                        padding-inline: var(--_default-col-gap-16);
+                        border-radius: 24px;
+
+                        & > span{
+                            display: var(--_d-flex);
+                        }
+                        input{
+                            border: none;
+                            background: transparent;
+                            font-size: var(--_default-font-size);
+                            width: var(--_admin-input-box-maxWidth);
+                            line-height: 1;
+                            padding: 0px;
+
+                            &:focus{
+                                outline: none;
+                            }
+                            &::placeholder{
+                                color: var(--_input-box-color-1);
+                            }
+                            // color: ;
+                        }
+                    }
+                }
+
+                & > button{
+                    display: var(--_d-flex);
+                    cursor: pointer;
+
+                    & > svg{
+                        width: var(--_admin-add-btn-size);
+                        height: var(--_admin-add-btn-size);
+                    }
+                }
+            }
+        }
+
+        &.table__div{
+            display: var(--_d-flex);
+            overflow-x: auto;
+            table{
+                min-width: 600px;
+                width: 100%;
+                border-collapse: collapse;
+                thead{
+                    background: var(--_g-default-bg);
+                    
+                    th{
+                        padding-inline: var(--_admin-table-pd-inline);
+                        padding-block: 6px;
+                        font-size: var(--_admin-table-th-fs);
+                        font-weight: 400;
+                        width: max-content;
+                    }
+                }
+                tbody{
+                    tr{
+                        td{
+                            &:not(:last-of-type){
+
+                                border-right: 1px solid var(--_default-border-color-2);
+                            }
+                        }
+                    }
+                    td{
+                        padding-inline: var(--_admin-table-pd-inline);
+                        padding-block: var(--_default-col-gap);
+                        text-align: center;
+                        &[datatype="title"]{
+                            font-weight: 500;
+                        }
+                        
+                        &[datatype="description"]{
+                            max-width: var(--_admin-table-desc-maxWidth);
+                            font-weight: 300;
+                        }
+
+                        img{
+                            width: var(--_admin-table-td-img-width);
+                            height: var(--_admin-table-td-img-height);
+                            object-fit: cover;
+                        }
+                        // max-width: 300px;
+                    }
+                    
+                    tr{
+                        &:not(:last-of-type){
+                            td{
+                                border-bottom: 1px solid var(--_default-border-color-2);
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
