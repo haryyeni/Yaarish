@@ -5,6 +5,7 @@ import AdminDashboardComponent from './Partials/AdminDashboard/admin-dashboard.c
 import ManageUsersComponent from './Partials/ManageUsers/manage-users.component';
 import UserBookings from './Partials/UserBookings/user-bookings.component';
 import ManageWorksComponent from './Partials/ManageWorks/manage-works.component';
+import CreateORUpdateComponent from './Partials/CreateORUpdateFormV2/create-or-update.compontent';
 
 export default function DashboardComponent(props){
     useEffect(()=>{
@@ -15,7 +16,8 @@ export default function DashboardComponent(props){
         dashboard: <AdminDashboardComponent />,
         manageUsers: <ManageUsersComponent />,
         userBookings: <UserBookings />,
-        manageWorks: <ManageWorksComponent />
+        manageWorks: <ManageWorksComponent />,
+        createUpdateForm : <CreateORUpdateComponent />
     }
     return <>
         <div 

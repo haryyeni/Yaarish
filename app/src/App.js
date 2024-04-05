@@ -6,6 +6,7 @@ import AdminComponent from "./components/admin/admin.component";
 import WebsiteIndexComponent from "./components/website/index.component";
 import LoginComponent from "./components/admin/Partials/Login/login.component";
 
+
 function App() {
   return <>
     <Routes>
@@ -17,8 +18,9 @@ function App() {
       <Route path="/user-bookings" element={<AdminComponent path="userBookings"/>}></Route>
       <Route path="/manage-works" element={<AdminComponent path="manageWorks"/>}></Route>
       <Route path="/work-bookings" element={<AdminComponent path="workBookings"/>}></Route>
-      <Route path="/works-category" element={<AdminComponent path="workCategories"/>}></Route>
+      <Route path="/works-category" element={<AdminComponent path="workCategoeris"/>}></Route>
       <Route path="/signup" element={<LoginComponent />}></Route>
+      <Route path="/create-update-form" element={<AdminComponent path="createUpdateForm"/>}></Route>
     </Routes>
   </>;
 }

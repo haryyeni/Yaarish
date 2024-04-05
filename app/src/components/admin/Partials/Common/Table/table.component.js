@@ -1,6 +1,11 @@
 import styles from "./table.module.scss";
+import { useNavigate } from "react-router-dom";
 
 export default function TableComponent(){
+    const navigate = useNavigate();
+    const handleAddBtnClick =()=>{
+        navigate("/create-update-form");
+    }
     return <>
         <div className={styles.table__main__div}>
             <div className={styles.header__div}>
@@ -17,7 +22,7 @@ export default function TableComponent(){
                         </span>
                         <input placeholder="Search Work" type="text"/>
                     </div>
-                    <button className={styles.add__btn}>
+                    <button className={styles.add__btn} onClick={handleAddBtnClick}>
                         <svg width="37" height="37" viewBox="0 0 37 37" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <circle cx="18.5" cy="18.5" r="18.5" fill="#407BFF"/>
                             <path d="M18.5 10.2783L18.5 26.7228" stroke="white" strokeWidth="2.2" strokeLinecap="round"/>
